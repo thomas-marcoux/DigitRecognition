@@ -31,6 +31,7 @@ def DR_MLP():
     X_test = (pd.read_csv('test.csv').values).astype('float32')
     #Convert list of labels to binary class matrix
     y_train = np_utils.to_categorical(labels) 
+        
     #Pre-processing: divide by max and substract mean
     scale = np.max(X_train)
     X_train /= scale
