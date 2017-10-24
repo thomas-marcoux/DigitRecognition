@@ -25,10 +25,10 @@ def build_model(input_dim, nb_classes):
 
 def DR_MLP():
     #Read data
-    train = pd.read_csv('train.csv')
+    train = pd.read_csv('../Input/train.csv')
     labels = train.ix[:,0].values.astype('int32')
     X_train = (train.ix[:,1:].values).astype('float32')
-    X_test = (pd.read_csv('test.csv').values).astype('float32')
+    X_test = (pd.read_csv('../Input/test.csv').values).astype('float32')
     #Convert list of labels to binary class matrix
     y_train = np_utils.to_categorical(labels) 
         
@@ -53,6 +53,6 @@ def DR_MLP():
     print("Baseline Error: %.2f%%" % (100-scores*100))
     print("Generating test predictions...")
     preds = model.predict_classes(X_test, verbose=0)
-    write_preds(preds, "mlp-results.csv")
+    write_preds(preds, "../Output/mlp-results.csv")
 
 DR_MLP()

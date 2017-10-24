@@ -16,7 +16,7 @@ def view_image_pixel_value(n, train_images):
 
 def DR_SVC():
     #Read and label data
-    labeled_images = pd.read_csv('train.csv')
+    labeled_images = pd.read_csv('../Input/train.csv')
     images = labeled_images.iloc[0:5000,1:]
     labels = labeled_images.iloc[0:5000,:1]
     
@@ -37,7 +37,7 @@ def DR_SVC():
     print(clf.score(test_images,test_labels))
     
     #Read testing set and generate predictions
-    test_data=pd.read_csv('test.csv')
+    test_data=pd.read_csv('../Input/test.csv')
     test_data[test_data>0]=1
     results=clf.predict(test_data[0:5000])
     
@@ -47,7 +47,7 @@ def DR_SVC():
     df.index.name='ImageId'
     df.index+=1
     df.columns=['Label']
-    df.to_csv('svm-results.csv', header=True)
+    df.to_csv('../Output/svm-results.csv', header=True)
 
 
 DR_SVC()    

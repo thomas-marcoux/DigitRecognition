@@ -47,8 +47,8 @@ def plot_graph(epochs, v1, v2, xlabel, ylabel):
 
 def DR_neuralNetwork(seed):
     #Read data
-    train = pd.read_csv("train.csv")
-    test_images = (pd.read_csv("test.csv").values).astype('float32')
+    train = pd.read_csv("../Input/train.csv")
+    test_images = (pd.read_csv("../Input/test.csv").values).astype('float32')
     train_images = (train.ix[:,1:].values).astype('float32')
     train_labels = train.ix[:,0].values.astype('int32')
     #Uncomment to show a sample of the digits:
@@ -87,7 +87,7 @@ def DR_neuralNetwork(seed):
     #Get predictions and write them to file
     predictions = model.predict_classes(test_images, verbose=0)
     result = pd.DataFrame({"ImageId": list(range(1,len(predictions)+1)), "Label": predictions})
-    result.to_csv("deepLearning-results.csv", index=False, header=True)
+    result.to_csv("../Output/deepLearning-results.csv", index=False, header=True)
     
     
 DR_neuralNetwork(64)
